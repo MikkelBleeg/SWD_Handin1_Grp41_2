@@ -11,8 +11,15 @@ namespace DebtBook.ViewModel
 {
     public class DebtBook_ViewModel: INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private Model.DebtBook DebtBook;
 
+        public DebtBook_ViewModel(Model.DebtBook debtBook)
+        {
+            DebtBook = debtBook;
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void INotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
