@@ -15,10 +15,10 @@
         <Label Content="Initiate Value" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
         <Label Content ="Kr" HorizontalAlignment="Left" Margin="167,52,0,0" VerticalAlignment="Top"/>
 
-        <Button Content="Save" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="80" />
-        <!--Command="{Binding SaveCommand-->
+        <Button Content="Save" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="80" Command="{Binding SaveCommand}" />
 
-        <Button Content="Cancel" HorizontalAlignment="Right" Margin="10,91,10,0" VerticalAlignment="Top" Width="80" />
-        <!--Command="{Binding CancelCommand-->
+
+        <Button Content="Cancel" HorizontalAlignment="Right" Margin="10,91,10,0" VerticalAlignment="Top" Width="80" Command="{Binding CancelCommand}" />
+       
     </Grid>
 </Window>
