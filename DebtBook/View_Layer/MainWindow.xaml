@@ -13,6 +13,7 @@
         SelectedIndex="{Binding Path=CurrentIndex}"
         DisplayMemberPath="CodeName" Name="lbxAgents" Grid.Column="1" 
         Margin="9" -->
+
         <Button Content="Add" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top"/>
         <!--Command="{Binding AddpartsCommand-->
     </Grid>
