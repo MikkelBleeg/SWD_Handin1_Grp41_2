@@ -13,15 +13,27 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using DebtBook = global::DebtBook.Model.DebtBook;
 
 namespace AddDebtHistory.ViewModel
 {
-    public class AddDebtHistory_ViewModel :ObservableCollection<Debit>, INotifyPropertyChanged
+    public class AddDebtHistory_ViewModel :ObservableCollection<global::DebtBook.Model.DebtBook>, INotifyPropertyChanged
     {
-        private Model.DebtHistory DebtBook;
+       
         string filename = "";
 
-    private void INotifyPropertyChanged([CallerMemberName] string propertyName = null)
+      public AddDebtHistory_ViewModel()
+        {
+            if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
+            {
+                // In Design mode
+                Add(new DebtBook());
+                Add(new DebtBook());
+            }
+        }
+     
+
+        private void INotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var handler = PropertyChanged;
             if (handler != null)
@@ -35,12 +47,12 @@ namespace AddDebtHistory.ViewModel
         ICommand _addCommand;
         public ICommand AddCommand
         {
-            get { return _addCommand ?? (_addCommand = new RelayCommand(AddDebtHistory)); }
+            get { return _addCommand ?? (_addCommand = new RelayCommand(AddDebtBook)); }
         }
 
-        private void AddDebtHistory()
+        private void AddDebtBook()
         {
-            Add(new DebtHistory());
+            Add(new global::DebtBook.Model.DebtBook());
             NotifyPropertyChanged("Count");
             CurrentIndex = Count - 1;
         }
@@ -54,7 +66,7 @@ namespace AddDebtHistory.ViewModel
         private void SaveFileCommand_Execute()
         {
             // Create an instance of the XmlSerializer class and specify the type of object to serialize.
-            XmlSerializer serializer = new XmlSerializer(typeof(DebtHistory));
+            XmlSerializer serializer = new XmlSerializer(typeof(global::DebtBook.Model.DebtBook));
             TextWriter writer = new StreamWriter(filename);
             // Serialize all the Debit.
             serializer.Serialize(writer, this);
