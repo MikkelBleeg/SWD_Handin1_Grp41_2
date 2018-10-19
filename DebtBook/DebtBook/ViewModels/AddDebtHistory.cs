@@ -12,12 +12,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using DebtBook = global::DebtBook.Model.DebtBook;
+
 using System.Windows;
+using DebtBook.Model;
+using System.Windows.Controls;
 
 namespace AddDebtHistory.ViewModel
 {
-    public class AddDebtHistory_ViewModel : ObservableCollection<global::DebtBook.Model.DebtBook>, INotifyPropertyChanged
+    public class AddDebtHistory_ViewModel : ObservableCollection<DebtBook.Model.DebtBook>, INotifyPropertyChanged
     {
 
         string filename = "";
@@ -27,8 +29,8 @@ namespace AddDebtHistory.ViewModel
             if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 // In Design mode
-                Add(new global::DebtBook.Model.DebtBook());
-                Add(new global::DebtBook.Model.DebtBook());
+                Add(Model.DebtBook());
+                Add(Model.DebtBook());
             }
         }
 
@@ -45,18 +47,14 @@ namespace AddDebtHistory.ViewModel
         #region Commands
 
         ICommand _addCommand;
-        public ICommand AddCommand
-        {
-            get { return _addCommand ?? (_addCommand = new RelayCommand(AddDebtBook)); }
-        }
 
-        private void AddDebtBook()
+        public ICommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand<ListView>(
+         list =>
         {
-            Add(new global::DebtBook.Model.DebtBook());
-            NotifyPropertyChanged("Count");
-            CurrentIndex = Count - 1;
-        }
-
+            ((list.ItemsSource) as ObservableCollection<Model.DebtBook>)?[list.SelectedIndex]?.Debts
+                                                      .Add(new Debit());
+        }));
+        
         ICommand _SaveCommand;
         public ICommand SaveCommand
         {
