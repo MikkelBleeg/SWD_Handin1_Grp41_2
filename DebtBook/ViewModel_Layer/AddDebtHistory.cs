@@ -3,35 +3,36 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
 using System.Xml.Serialization;
-using DebtBook.Model;
+
 using MvvmFoundation.Wpf;
 using System.Runtime.CompilerServices;
-using System;
+
 using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using DebtBook = global::DebtBook.Model.DebtBook;
+using System.Windows;
 
 namespace AddDebtHistory.ViewModel
 {
-    public class AddDebtHistory_ViewModel :ObservableCollection<global::DebtBook.Model.DebtBook>, INotifyPropertyChanged
+    public class AddDebtHistory_ViewModel : ObservableCollection<global::DebtBook.Model.DebtBook>, INotifyPropertyChanged
     {
-       
+
         string filename = "";
 
-      public AddDebtHistory_ViewModel()
+        public AddDebtHistory_ViewModel()
         {
             if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 // In Design mode
-                Add(new DebtBook());
-                Add(new DebtBook());
+                Add(new global::DebtBook.Model.DebtBook());
+                Add(new global::DebtBook.Model.DebtBook());
             }
         }
-     
+
 
         private void INotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
