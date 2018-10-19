@@ -121,4 +121,56 @@ namespace AddDebtHistory.ViewModel
         #endregion
     }
 
+
+    /* jeg tænkte noget i stil med:
+     *  public class AddDebtHistory_ViewModel :INotifyPropertyChanged
+    {
+        // ALTERNATIV 1: 
+         private Debtbook.Model.DebtBook DebtBook;
+         private string name_ ;
+         private long initialAmount_;
+
+        public AddDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
+        {
+            DebtBook = debtBook;
+        }
+        
+        //  Følgende skal laves med commands og er bare pseudokode fra min side
+
+        // COMMAND NAME CHANGED --- opdater  name_;
+
+        // COMMAND INTITIL AMOUNT CHANED -- opdater initialAmount_;
+
+        // COMMAND SAVE ----
+        {
+                DebtBook.AddNewHistory(name_, initialAmount_);
+        }
+
+       // _________________________________________________________________________________________
+
+         // ALTERNATIV 2: Hvis det er fåstået sådan at vi kun må have Model classes i viewModel
+
+         private Debtbook.Model.DebtBook DebtBook;
+         private Debtbook.Model.DebtHistory history => new Debtbook.Model.DebtHistory()
+
+        public AddDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
+        {
+            DebtBook = debtBook;
+        }
+        
+        //  Følgende skal laves med commands og er bare pseudokode fra min side
+
+        // COMMAND NAME CHANGED --- opdater  history.Debtor;
+
+        // COMMAND INTITIL AMOUNT CHANED -- idk kræver ændringer til DebtHistory, hvilket også er fint 
+        
+    // COMMAND SAVE ----
+        {
+                DebtBook.AddNewHistory(history); // kræver en AddNewHistory(Debtbook.Model.DebtHistory history) tilføjes til DebtBook..
+        }
+        
+
+
+     */
+
 }
