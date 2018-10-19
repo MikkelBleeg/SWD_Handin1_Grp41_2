@@ -9,8 +9,11 @@
     <Grid>
         <Label Content="Parts:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ListBox HorizontalAlignment="Left" Margin="10,42,0,50" VerticalAlignment="Top" Height="180" Width="100"/>
-
+        <!--ItemsSource="{Binding }" IsSynchronizedWithCurrentItem="True"
+        SelectedIndex="{Binding Path=CurrentIndex}"
+        DisplayMemberPath="CodeName" Name="lbxAgents" Grid.Column="1" 
+        Margin="9" -->
         <Button Content="Add" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top"/>
-
+        <!--Command="{Binding AddpartsCommand-->
     </Grid>
 </Window>

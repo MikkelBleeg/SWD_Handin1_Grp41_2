@@ -9,15 +9,22 @@
     <Grid>
 
         <TextBox HorizontalAlignment="Center" Margin="10,14,10,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="80"/>
+        <!--Text="{Binding Path=Name}"DisplayMemberPath="CodeName" Name="lbxAgents" Grid.Column="1"-->
 
         <TextBox HorizontalAlignment="Right" Height="23" Margin="90,50,50,0" TextWrapping="Wrap" Text="Value" VerticalAlignment="Top" Width="80"/>
+        <!--Text="{Binding Path=Value}"-->
+
         <Label Content="Value:" HorizontalAlignment="Right" Margin="10,42,150,0" VerticalAlignment="Top"/>
         <Label Content="kr" HorizontalAlignment="Right" Margin="10,42,10,0" VerticalAlignment="Top"/>
 
         <Button Content="Add Value" HorizontalAlignment="Right" Margin="10,80,50,0" VerticalAlignment="Top" />
+        <!--Command="{Binding AddValueCommand-->
 
         <Label Content="Transaction history" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
         <ListBox HorizontalAlignment="Left" Margin="10,140,0,50" VerticalAlignment="Top" Height="180" Width="100" />
-        <Button Content="Close" HorizontalAlignment="Left" Margin="10,350,0,10" VerticalAlignment="Bottom" />
+        <!--ItemsSource="{Binding }" IsSynchronizedWithCurrentItem="True"
+        SelectedIndex="{Binding Path=CurrentIndex}"
+        DisplayMemberPath="CodeName" Name="lbxAgents" Grid.Column="1"-->
+<Button Content="Close" HorizontalAlignment="Left" Margin="10,350,0,10" VerticalAlignment="Bottom" />
     </Grid>
 </Window>
