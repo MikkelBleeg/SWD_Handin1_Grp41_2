@@ -12,7 +12,7 @@ namespace DebtBook.Model
 
         public DateTime Date { get; private set; }
 
-        public Debit(long amount = 0)
+        public Debit(long amount = 0)//skal den ikke være tom?
         {
             Amount = amount;
             Date = DateTime.Now;
