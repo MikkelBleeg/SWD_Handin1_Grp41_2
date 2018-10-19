@@ -1,14 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
 using System.Xml.Serialization;
-
 using MvvmFoundation.Wpf;
 using System.Runtime.CompilerServices;
-
+using System.ComponentModel;
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
