@@ -29,8 +29,8 @@ namespace AddDebtHistory.ViewModel
             if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 // In Design mode
-                Add(Model.DebtBook());
-                Add(Model.DebtBook());
+                Add(DebtBook());
+                Add(DebtBook());
             }
         }
 
@@ -51,7 +51,7 @@ namespace AddDebtHistory.ViewModel
         public ICommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand<ListView>(
          list =>
         {
-            ((list.ItemsSource) as ObservableCollection<Model.DebtBook>)?[list.SelectedIndex]?.Debts
+            ((list.ItemsSource) as ObservableCollection<DebtBook.Model.DebtBook>)?[list.SelectedIndex]?.Debts
                                                       .Add(new Debit());
         }));
         
