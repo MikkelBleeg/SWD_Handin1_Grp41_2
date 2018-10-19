@@ -12,16 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ViewLayer
+namespace DebtBookApp
 {
     /// <summary>
-    /// Interaction logic for DebtHistory.xaml
+    /// Interaction logic for DebtHistoryWindow.xaml
     /// </summary>
-    public partial class DebtHistory : Window
+    public partial class DebtHistoryWindow : Window
     {
-        public DebtHistory()
+        public DebtHistoryWindow()
         {
-            InitializeComponent();
+             InitializeComponent();
         }
     }
 }

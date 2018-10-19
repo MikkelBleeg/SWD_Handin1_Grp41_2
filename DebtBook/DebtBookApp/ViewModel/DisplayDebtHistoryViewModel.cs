@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using DebtBookApp.Model;
 
-namespace ViewModel_Layer
+namespace DebtBookApp.ViewModel
 {
-    class DisplayDebtHistory_ViewModel : INotifyPropertyChanged
+    public class DisplayDebtHistoryViewModel : INotifyPropertyChanged
     {
 
-        private DebtBook.Model.DebtBook DebtBook;
+        private DebtBook DebtBook;
 
-        public DisplayDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
+        public DisplayDebtHistoryViewModel(DebtBook debtBook)
         {
             DebtBook = debtBook;
         }

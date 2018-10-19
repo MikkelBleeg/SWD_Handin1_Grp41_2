@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtBook", "DebtBook\DebtBook.csproj", "{D174CE9B-0726-4FE2-B908-50748859BFC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtBookApp", "DebtBookApp\DebtBookApp.csproj", "{F6927E59-3CAF-444B-A620-2490C24AFC9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D174CE9B-0726-4FE2-B908-50748859BFC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D174CE9B-0726-4FE2-B908-50748859BFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D174CE9B-0726-4FE2-B908-50748859BFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D174CE9B-0726-4FE2-B908-50748859BFC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6927E59-3CAF-444B-A620-2490C24AFC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6927E59-3CAF-444B-A620-2490C24AFC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6927E59-3CAF-444B-A620-2490C24AFC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6927E59-3CAF-444B-A620-2490C24AFC9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8BF679FB-7ED5-405E-8A19-2E1E0C9A89CC}
+		SolutionGuid = {89D526AC-EC7A-418E-9B61-23575262EFE9}
 	EndGlobalSection
 EndGlobal

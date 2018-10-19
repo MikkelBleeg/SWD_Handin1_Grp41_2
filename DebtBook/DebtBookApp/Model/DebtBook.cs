@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DebtBook.Model
+namespace DebtBookApp.Model
 {
     public class DebtBook
     {

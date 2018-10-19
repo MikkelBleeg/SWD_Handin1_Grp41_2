@@ -4,20 +4,16 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
 using System.Xml.Serialization;
-using MvvmFoundation.Wpf;
 using System.Runtime.CompilerServices;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Windows;
-using DebtBook.Model;
 using System.Windows.Controls;
 
-namespace AddDebtHistory.ViewModel
+/*
+namespace DebtBookApp.ViewModel
 {
     public class AddDebtHistory_ViewModel : ObservableCollection<DebtBook.Model.DebtBook>, INotifyPropertyChanged
     {
@@ -50,11 +46,11 @@ namespace AddDebtHistory.ViewModel
 
         public ICommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand<ListView>(
          list =>
-        {
-            ((list.ItemsSource) as ObservableCollection<DebtBook.Model.DebtBook>)?[list.SelectedIndex]?.Debts
-                                                      .Add(new Debit());
-        }));
-        
+         {
+             ((list.ItemsSource) as ObservableCollection<DebtBook.Model.DebtBook>)?[list.SelectedIndex]?.Debts
+                                                       .Add(new Debit());
+         }));
+
         ICommand _SaveCommand;
         public ICommand SaveCommand
         {
@@ -78,10 +74,10 @@ namespace AddDebtHistory.ViewModel
 
         private ICommand _CancelCommand;
 
-        public ICommand CancelCommand
-        {
-            //Do something
-        }
+        // public ICommand CancelCommand
+        // {
+        //Do something
+        // }
 
         #endregion
 
@@ -167,8 +163,6 @@ namespace AddDebtHistory.ViewModel
                 DebtBook.AddNewHistory(history); // kræver en AddNewHistory(Debtbook.Model.DebtHistory history) tilføjes til DebtBook..
         }
         
-
+}
 
      */
-
-}

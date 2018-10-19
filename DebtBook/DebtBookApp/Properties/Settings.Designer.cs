@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace View_Layer.Properties
+namespace DebtBookApp.Properties
 {
 
 

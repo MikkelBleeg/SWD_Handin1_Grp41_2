@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DebtBook.Model
+namespace DebtBookApp.Model
 {
     public class Debit
     {
-        public long Amount { get; set;}
+        public long Amount { get; set; }
 
         public DateTime Date { get; private set; }
 
@@ -17,6 +17,6 @@ namespace DebtBook.Model
             Amount = amount;
             Date = DateTime.Now;
         }
-        
+
     }
 }

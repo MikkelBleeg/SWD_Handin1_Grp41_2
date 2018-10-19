@@ -12,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ViewLayer
+namespace DebtBookApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddWindow : Window
     {
-        public MainWindow()
+        public AddWindow()
         {
             InitializeComponent();
         }
     }
 }
+

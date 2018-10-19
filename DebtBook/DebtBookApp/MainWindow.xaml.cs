@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ViewLayer
+namespace DebtBookApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,10 @@ namespace ViewLayer
         public MainWindow()
         {
             InitializeComponent();
+
+           NavigationService navSer = new NavigationService();
+
+            navSer.getAddWindow();
         }
     }
 }
