@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace View_Layer
+namespace ViewLayer
 {
     /// <summary>
     /// Interaction logic for DebtHistory.xaml
