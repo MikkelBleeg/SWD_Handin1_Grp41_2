@@ -18,7 +18,8 @@ namespace DebtBookApp
         public ViewModelLocator(NavigationService navService = null)
         {
             if (navService != null)
-                navService_ = navService;        }
+                navService_ = navService;
+        }
 
         public DebtBookViewModel DebtBookViewModel
         {

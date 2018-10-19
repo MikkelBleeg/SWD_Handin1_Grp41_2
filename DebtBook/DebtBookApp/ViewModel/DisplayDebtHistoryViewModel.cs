@@ -9,8 +9,8 @@ using DebtBookApp.Model;
 
 namespace DebtBookApp.ViewModel
 {
-    public class DisplayDebtHistoryViewModel : INotifyPropertyChanged
-    {
+    public class DisplayDebtHistoryViewModel: ViewModelBaseClass
+    { 
 
         private DebtBook DebtBook;
 
@@ -19,16 +19,5 @@ namespace DebtBookApp.ViewModel
             DebtBook = debtBook;
         }
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void INotifyPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="ViewModel\AddHistoryDebtHistory.cs" />
     <Compile Include="ViewModel\DebtBookViewModel.cs" />
     <Compile Include="ViewModel\DisplayDebtHistoryViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBaseClass.cs" />
     <Page Include="AddWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
