@@ -8,16 +8,21 @@ namespace DebtBookApp.Model
 {
     public class DebtBook
     {
-        private ICollection<DebtHistory> Debts => new List<DebtHistory>();
+         ICollection<DebtHistory> Debts_ => new List<DebtHistory>();
+
+        public  List<DebtHistory> DebtsHistories
+        {
+            get { return (List<DebtHistory>) Debts_;}
+        }
 
         public void AddNewHistory(string debtor = "", long initialAmount = 0)
         {
-            Debts.Add(new DebtHistory(debtor, initialAmount));
+            Debts_.Add(new DebtHistory(debtor, initialAmount));
         }
 
         public void AddDebit(string debtor = "", long amount = 0)
         {
-            foreach (var history in Debts)
+            foreach (var history in Debts_)
             {
                 if (history.Debtor == debtor)
                 {

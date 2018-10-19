@@ -18,5 +18,21 @@ namespace DebtBookApp.ViewModel
             DebtBook = debtBook;
         }
 
+        public List<DebtHistory> DebtsHistories
+        {
+            get
+            {
+                return DebtBook.DebtsHistories;
+            }
+            set
+            {
+                if (value != DebtBook.DebtsHistories)
+                {
+                    DebtBook.DebtsHistories = value;
+                    INotifyPropertyChanged();
+                }
+            }
+        }
+
     }
 }

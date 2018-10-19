@@ -6,7 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBookApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="200">
+        Title="MainWindow" Height="350" Width="200"
+        DataContext="{Binding Source={StaticResource ViewModelLocator},
+        Path=DebtBookViewModel}">
     <Grid>
         <Label Content="Debitors:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ListBox HorizontalAlignment="Left" Margin="10,42,0,50" VerticalAlignment="Top" Height="180" Width="100"/>
