@@ -10,17 +10,22 @@
     <Grid>
         <Label Content="Debitors:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
-        <ListView Margin="10" Name="ting">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" Width="80" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Amount" Width="70" DisplayMemberBinding="{Binding Amount}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        
-        <Button Content="Add" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top"/>
-        <!--Command="{Binding AddpartsCommand-->
+        <DataGrid  ItemsSource="{Binding }" 
+                   IsSynchronizedWithCurrentItem="True"
+                   SelectedIndex="{Binding Path=CurrentIndex}"
+                   SelectedItem="{Binding Path=CurrenDebit}"
+                   Name="dgridAgents" 
+                   Grid.Column="2" 
+                   Margin="9"  
+                   CanUserAddRows="False" 
+                   CanUserDeleteRows="False" 
+                   IsReadOnly="True"
+                   MinRowHeight="12" 
+                   MouseLeftButtonDown="dgridAgents_MouseLeftButtonDown"
+        />
+
+        <Button Content="Add" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" Command="{Binding AddDebitCommand }"/>
+        <!--Command="{Binding }"-->
     </Grid>
 </Window>
 

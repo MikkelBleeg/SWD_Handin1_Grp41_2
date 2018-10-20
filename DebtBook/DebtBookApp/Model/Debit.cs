@@ -13,10 +13,10 @@ namespace DebtBookApp.Model
 
         public DateTime Date { get; private set; }
 
-        public Debit(string name="", long amount = 0)
+        public Debit(string dname="", long damount = 0)
         {
-            Name = name;
-            Amount = amount;
+            Name = dname;
+            Amount = damount;
             Date = DateTime.Now;
         }
 
