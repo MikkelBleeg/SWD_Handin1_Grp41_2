@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DebtBookApp.Model;
 
 namespace DebtBookApp
 {
@@ -24,6 +25,8 @@ namespace DebtBookApp
         {
             InitializeComponent();
 
+            List<Debit>Items=new List<Debit>();
+            Items.Add(new Debit(){Name="Mette", Amount = -289});
            NavigationService navSer = new NavigationService();
 
             navSer.getAddWindow();

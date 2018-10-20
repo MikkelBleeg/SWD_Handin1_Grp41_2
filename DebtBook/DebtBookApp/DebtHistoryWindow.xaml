@@ -9,7 +9,7 @@
     <Grid>
 
         <TextBox HorizontalAlignment="Center" Margin="10,14,10,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="80"/>
-        <!--Text="{Binding Path=Name}"DisplayMemberPath="CodeName" Name="lbxAgents" Grid.Column="1"-->
+        <!--Text="{Binding Path=Name}"DisplayMemberPath="Name" Name="lbxDebit" Grid.Column="1"-->
 
         <TextBox HorizontalAlignment="Right" Height="23" Margin="90,50,50,0" TextWrapping="Wrap" Text="Value" VerticalAlignment="Top" Width="80"/>
         <!--Text="{Binding Path=Value}"-->
@@ -24,7 +24,7 @@
         <ListBox HorizontalAlignment="Left" Margin="10,140,0,50" VerticalAlignment="Top" Height="180" Width="100" />
         <!--ItemsSource="{Binding }" IsSynchronizedWithCurrentItem="True"
         SelectedIndex="{Binding Path=CurrentIndex}"
-        DisplayMemberPath="CodeName" Name="lbxAgents" Grid.Column="1"-->
+        DisplayMemberPath="Name" Name="lbxdebit" Grid.Column="1"-->
         <Button Content="Close" HorizontalAlignment="Left" Margin="10,350,0,10" VerticalAlignment="Bottom" />
     </Grid>
 </Window>
