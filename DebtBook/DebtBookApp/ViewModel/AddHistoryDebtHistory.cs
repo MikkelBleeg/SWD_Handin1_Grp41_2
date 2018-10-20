@@ -25,7 +25,7 @@ namespace DebtBookApp.ViewModel
 
         public AddDebtHistory_ViewModel()
         {
-            if ((bool) (DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
+            if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 //In Design mode
                 Add(new DebtBook()); //Ved ikke hvad der skal ind
@@ -51,7 +51,7 @@ namespace DebtBookApp.ViewModel
         {
             get
             {
-               return  _addDebitCommand ?? (_addDebitCommand = new RelayCommand(AddDebit));
+                return _addDebitCommand ?? (_addDebitCommand = new RelayCommand(AddDebit));
             }
         }
 
@@ -71,7 +71,7 @@ namespace DebtBookApp.ViewModel
             }
         }
 
-    ICommand _SaveCommand;
+        ICommand _SaveCommand;
         public ICommand SaveCommand
         {
             get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)); }
@@ -80,43 +80,43 @@ namespace DebtBookApp.ViewModel
         private void SaveFileCommand_Execute()
         {
             //Create an instance of the XmlSerializer class and specify the type of object to serialize.
-           XmlSerializer serializer = new XmlSerializer(typeof(DebtBook));
-        TextWriter writer = new StreamWriter(filename);
-       // Serialize all the Debit.
-       serializer.Serialize(writer, this);
-        writer.Close();
+            XmlSerializer serializer = new XmlSerializer(typeof(DebtBook));
+            TextWriter writer = new StreamWriter(filename);
+            // Serialize all the Debit.
+            serializer.Serialize(writer, this);
+            writer.Close();
         }
 
-    private bool SaveFileCommand_CanExecute()
-    {
-        return (filename != "") && (Count > 0);
-    }
+        private bool SaveFileCommand_CanExecute()
+        {
+            return (filename != "") && (Count > 0);
+        }
 
-    //private ICommand _CancelCommand;
+        //private ICommand _CancelCommand;
 
-    //public ICommand CancelCommand
-    //{
-    //    Do something
-    //}
+        //public ICommand CancelCommand
+        //{
+        //    Do something
+        //}
 
-    #endregion
+        #endregion
 
-    #region Properties
+        #region Properties
 
-    //int currentIndex = -1;
+        //int currentIndex = -1;
 
-    //public int CurrentIndex
-    //{
-    //    get { return currentIndex; }
-    //    set
-    //    {
-    //        if (currentIndex != value)
-    //        {
-    //            currentIndex = value;
-    //            NotifyPropertyChanged();
-    //        }
-    //    }
-    //}
+        //public int CurrentIndex
+        //{
+        //    get { return currentIndex; }
+        //    set
+        //    {
+        //        if (currentIndex != value)
+        //        {
+        //            currentIndex = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
         Debit currentDebit = null;
 
         public Debit CurrentDebit
@@ -126,14 +126,14 @@ namespace DebtBookApp.ViewModel
             {
                 if (currentDebit != value)
                 {
-                currentDebit = value;
+                    currentDebit = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-    public IReadOnlyCollection<int> FilterAmount
-    {
+        public IReadOnlyCollection<int> FilterAmount
+        {
             get
             {
                 ObservableCollection<int> result = new ObservableCollection<int>();
@@ -143,7 +143,7 @@ namespace DebtBookApp.ViewModel
                 return result;
             }
         }
-    int currentAmountIndex = 0;
+        int currentAmountIndex = 0;
 
         public int CurrentAmountIndex
         {
@@ -153,7 +153,7 @@ namespace DebtBookApp.ViewModel
                 if (currentAmountIndex != value)
                 {
                     ICollectionView cv = CollectionViewSource.GetDefaultView(this);
-                currentAmountIndex = value;
+                    currentAmountIndex = value;
                     if (currentAmountIndex == 0)
                         cv.Filter = null; // Index 0 is no filter (show all)
                     else
@@ -170,22 +170,22 @@ namespace DebtBookApp.ViewModel
             Debit debit = ag as Debit;
             return (debit.Amount == filter);
         }
-    #endregion
+        #endregion
 
-    #region INotifyPropertyChanged implementation
+        #region INotifyPropertyChanged implementation
 
-    public new event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
-    private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        var handler = PropertyChanged;
-        if (handler != null)
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            handler(this, new PropertyChangedEventArgs(propertyName));
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
+        #endregion
     }
-    #endregion
-}
 
 
 /* jeg tænkte noget i stil med:
