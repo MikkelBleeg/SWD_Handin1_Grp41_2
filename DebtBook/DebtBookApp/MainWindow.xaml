@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBookApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="200">
+        Title="DebtBook" Height="350" Width="200">
     <Grid>
         <Label Content="Debitors:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
@@ -14,14 +14,14 @@
                    IsSynchronizedWithCurrentItem="True"
                    SelectedIndex="{Binding Path=CurrentIndex}"
                    SelectedItem="{Binding Path=CurrenDebit}"
-                   Name="dgridAgents" 
+                   Name="dgridDebit" 
                    Grid.Column="2" 
                    Margin="9"  
                    CanUserAddRows="False" 
                    CanUserDeleteRows="False" 
                    IsReadOnly="True"
                    MinRowHeight="12" 
-                   MouseLeftButtonDown="dgridAgents_MouseLeftButtonDown"
+                   MouseLeftButtonDown="dgridDebit_MouseLeftButtonDown"
         />
 
         <Button Content="Add" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" Command="{Binding AddDebitCommand }"/>

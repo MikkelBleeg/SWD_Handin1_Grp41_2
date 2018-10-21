@@ -25,7 +25,7 @@ namespace DebtBookApp.ViewModel
 
         public AddDebtHistory_ViewModel()
         {
-            if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
+            if ((bool) (DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
                 //In Design mode
                 Add(new DebtBook()); //Ved ikke hvad der skal ind
@@ -49,10 +49,7 @@ namespace DebtBookApp.ViewModel
 
         public ICommand AddDebitCommand
         {
-            get
-            {
-                return _addDebitCommand ?? (_addDebitCommand = new RelayCommand(AddDebit));
-            }
+            get { return _addDebitCommand ?? (_addDebitCommand = new RelayCommand(AddDebit)); }
         }
 
         private void AddDebit()
@@ -72,9 +69,14 @@ namespace DebtBookApp.ViewModel
         }
 
         ICommand _SaveCommand;
+
         public ICommand SaveCommand
         {
-            get { return _SaveCommand ?? (_SaveCommand = new RelayCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute)); }
+            get
+            {
+                return _SaveCommand ??
+                       (_SaveCommand = new RelayCommand(SaveFileCommand_Execute, SaveFileCommand_CanExecute));
+            }
         }
 
         private void SaveFileCommand_Execute()
@@ -143,6 +145,7 @@ namespace DebtBookApp.ViewModel
                 return result;
             }
         }
+
         int currentAmountIndex = 0;
 
         public int CurrentAmountIndex
@@ -161,15 +164,18 @@ namespace DebtBookApp.ViewModel
                         filter = FilterAmount.ElementAt(currentAmountIndex);
                         cv.Filter = CollectionViewSource_Filter;
                     }
+
                     NotifyPropertyChanged();
                 }
             }
         }
+
         private bool CollectionViewSource_Filter(object ag)
         {
             Debit debit = ag as Debit;
             return (debit.Amount == filter);
         }
+
         #endregion
 
         #region INotifyPropertyChanged implementation
@@ -184,8 +190,10 @@ namespace DebtBookApp.ViewModel
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
         #endregion
     }
+}
 
 
 /* jeg tænkte noget i stil med:
