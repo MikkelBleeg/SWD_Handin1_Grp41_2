@@ -26,7 +26,7 @@ namespace DebtBookApp.Model
             {
                 if (history.Debtor == debtor)
                 {
-                    history.AddDebit(amount);
+                    history.AddDebit(debtor,amount);
                 }
             }
         }

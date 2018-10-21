@@ -11,22 +11,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using DebtBookApp.Model;
+using MvvmFoundation.Wpf;
 
-/*
 namespace DebtBookApp.ViewModel
 {
-    public class AddDebtHistory_ViewModel : ObservableCollection<DebtBook.Model.DebtBook>, INotifyPropertyChanged
+    public class AddDebtHistory_ViewModel : ObservableCollection<DebtBook>, INotifyPropertyChanged
     {
-
+        int filter;
         string filename = "";
+        bool dirty = false;
 
         public AddDebtHistory_ViewModel()
         {
             if ((bool)(DesignerProperties.IsInDesignModeProperty.GetMetadata(typeof(DependencyObject)).DefaultValue))
             {
-                // In Design mode
-                Add(DebtBook());
-                Add(DebtBook());
+                //In Design mode
+                Add(new DebtBook()); //Ved ikke hvad der skal ind
+                Add(new DebtBook());
             }
         }
 
@@ -42,14 +45,31 @@ namespace DebtBookApp.ViewModel
 
         #region Commands
 
-        ICommand _addCommand;
+        ICommand _addDebitCommand;
 
-        public ICommand AddCommand => _addCommand ?? (_addCommand = new RelayCommand<ListView>(
-         list =>
-         {
-             ((list.ItemsSource) as ObservableCollection<DebtBook.Model.DebtBook>)?[list.SelectedIndex]?.Debts
-                                                       .Add(new Debit());
-         }));
+        public ICommand AddDebitCommand
+        {
+            get
+            {
+                return _addDebitCommand ?? (_addDebitCommand = new RelayCommand(AddDebit));
+            }
+        }
+
+        private void AddDebit()
+        {
+            // Show Modal Dialog
+            var dlg = new AddWindow();
+            dlg.Title = "Add New Debit";
+            Debit newDebit = new Debit();
+            dlg.DataContext = newDebit;
+            if (dlg.ShowDialog() == true)
+            {
+                Add(newDebit);
+                CurrentAmountIndex = 0;
+                CurrentDebit = newDebit;
+                dirty = true;
+            }
+        }
 
         ICommand _SaveCommand;
         public ICommand SaveCommand
@@ -59,8 +79,8 @@ namespace DebtBookApp.ViewModel
 
         private void SaveFileCommand_Execute()
         {
-            // Create an instance of the XmlSerializer class and specify the type of object to serialize.
-            XmlSerializer serializer = new XmlSerializer(typeof(global::DebtBook.Model.DebtBook));
+            //Create an instance of the XmlSerializer class and specify the type of object to serialize.
+            XmlSerializer serializer = new XmlSerializer(typeof(DebtBook));
             TextWriter writer = new StreamWriter(filename);
             // Serialize all the Debit.
             serializer.Serialize(writer, this);
@@ -72,32 +92,84 @@ namespace DebtBookApp.ViewModel
             return (filename != "") && (Count > 0);
         }
 
-        private ICommand _CancelCommand;
+        //private ICommand _CancelCommand;
 
-        // public ICommand CancelCommand
-        // {
-        //Do something
-        // }
+        //public ICommand CancelCommand
+        //{
+        //    Do something
+        //}
 
         #endregion
 
         #region Properties
 
-        int currentIndex = -1;
+        //int currentIndex = -1;
 
-        public int CurrentIndex
+        //public int CurrentIndex
+        //{
+        //    get { return currentIndex; }
+        //    set
+        //    {
+        //        if (currentIndex != value)
+        //        {
+        //            currentIndex = value;
+        //            NotifyPropertyChanged();
+        //        }
+        //    }
+        //}
+        Debit currentDebit = null;
+
+        public Debit CurrentDebit
         {
-            get { return currentIndex; }
+            get { return currentDebit; }
             set
             {
-                if (currentIndex != value)
+                if (currentDebit != value)
                 {
-                    currentIndex = value;
+                    currentDebit = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
+        public IReadOnlyCollection<int> FilterAmount
+        {
+            get
+            {
+                ObservableCollection<int> result = new ObservableCollection<int>();
+                result.Add("All");
+                foreach (var s in new DebtHistory.Amounts())
+                    result.Add(s);
+                return result;
+            }
+        }
+        int currentAmountIndex = 0;
+
+        public int CurrentAmountIndex
+        {
+            get { return currentAmountIndex; }
+            set
+            {
+                if (currentAmountIndex != value)
+                {
+                    ICollectionView cv = CollectionViewSource.GetDefaultView(this);
+                    currentAmountIndex = value;
+                    if (currentAmountIndex == 0)
+                        cv.Filter = null; // Index 0 is no filter (show all)
+                    else
+                    {
+                        filter = FilterAmount.ElementAt(currentAmountIndex);
+                        cv.Filter = CollectionViewSource_Filter;
+                    }
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        private bool CollectionViewSource_Filter(object ag)
+        {
+            Debit debit = ag as Debit;
+            return (debit.Amount == filter);
+        }
         #endregion
 
         #region INotifyPropertyChanged implementation
@@ -116,53 +188,53 @@ namespace DebtBookApp.ViewModel
     }
 
 
-    /* jeg tænkte noget i stil med:
-     *  public class AddDebtHistory_ViewModel :INotifyPropertyChanged
+/* jeg tænkte noget i stil med:
+   public class AddDebtHistory_ViewModel :INotifyPropertyChanged
+{
+    // ALTERNATIV 1: 
+     private Debtbook.Model.DebtBook DebtBook;
+     private string name_ ;
+     private long initialAmount_;
+
+    public AddDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
     {
-        // ALTERNATIV 1: 
-         private Debtbook.Model.DebtBook DebtBook;
-         private string name_ ;
-         private long initialAmount_;
+        DebtBook = debtBook;
+    }
 
-        public AddDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
-        {
-            DebtBook = debtBook;
-        }
-        
-        //  Følgende skal laves med commands og er bare pseudokode fra min side
+    //  Følgende skal laves med commands og er bare pseudokode fra min side
 
-        // COMMAND NAME CHANGED --- opdater  name_;
+    // COMMAND NAME CHANGED --- opdater  name_;
 
-        // COMMAND INTITIL AMOUNT CHANED -- opdater initialAmount_;
+    // COMMAND INTITIL AMOUNT CHANED -- opdater initialAmount_;
 
-        // COMMAND SAVE ----
-        {
-                DebtBook.AddNewHistory(name_, initialAmount_);
-        }
-
-       // _________________________________________________________________________________________
-
-         // ALTERNATIV 2: Hvis det er fåstået sådan at vi kun må have Model classes i viewModel
-
-         private Debtbook.Model.DebtBook DebtBook;
-         private Debtbook.Model.DebtHistory history => new Debtbook.Model.DebtHistory()
-
-        public AddDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
-        {
-            DebtBook = debtBook;
-        }
-        
-        //  Følgende skal laves med commands og er bare pseudokode fra min side
-
-        // COMMAND NAME CHANGED --- opdater  history.Debtor;
-
-        // COMMAND INTITIL AMOUNT CHANED -- idk kræver ændringer til DebtHistory, hvilket også er fint 
-        
     // COMMAND SAVE ----
-        {
-                DebtBook.AddNewHistory(history); // kræver en AddNewHistory(Debtbook.Model.DebtHistory history) tilføjes til DebtBook..
-        }
-        
-}
+    {
+            DebtBook.AddNewHistory(name_, initialAmount_);
+    }
 
-     */
+   // _________________________________________________________________________________________
+
+     // ALTERNATIV 2: Hvis det er fåstået sådan at vi kun må have Model classes i viewModel
+
+     private Debtbook.Model.DebtBook DebtBook;
+     private Debtbook.Model.DebtHistory history => new Debtbook.Model.DebtHistory()
+
+    public AddDebtHistory_ViewModel(DebtBook.Model.DebtBook debtBook)
+    {
+        DebtBook = debtBook;
+    }
+
+    //  Følgende skal laves med commands og er bare pseudokode fra min side
+
+    // COMMAND NAME CHANGED --- opdater  history.Debtor;
+
+    // COMMAND INTITIL AMOUNT CHANED -- idk kræver ændringer til DebtHistory, hvilket også er fint 
+
+// COMMAND SAVE ----
+    {
+            DebtBook.AddNewHistory(history); // kræver en AddNewHistory(Debtbook.Model.DebtHistory history) tilføjes til DebtBook..
+    }
+
+}
+*/
+

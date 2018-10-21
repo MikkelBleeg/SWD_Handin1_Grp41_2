@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace DebtBookApp.Model
 
             if (initialAmount != 0)
             {
-                Debt.Add(new Debit(initialAmount));
+                Debt.Add(new Debit(debtor,initialAmount));
             }
 
         }
@@ -36,11 +37,23 @@ namespace DebtBookApp.Model
                 return total_;
             }
         }
-
-        public void AddDebit(long amount)
+        
+        public void AddDebit(string debit,long amount)
         {
-            Debt.Add(new Debit(amount));
+            Debt.Add(new Debit(debit,amount));
         }
-
+        public class Amounts : ObservableCollection<int>
+        {
+            public Amounts()
+            {
+                Add(100);
+                Add(-250);
+                Add(-100);
+                Add(250);
+                Add(300);
+                Add(-300);
+            }
+            
+        }
     }
 }
