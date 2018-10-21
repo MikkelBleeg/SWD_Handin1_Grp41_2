@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DebtBookApp.Model;
+using DebtBookApp.ViewModel;
 
 namespace DebtBookApp
 {
@@ -27,9 +28,20 @@ namespace DebtBookApp
 
             List<Debit>Items=new List<Debit>();
             Items.Add(new Debit(){Name="Mette", Amount = -289});
-           NavigationService navSer = new NavigationService();
 
-            navSer.getAddWindow();
+            ViewModelLocator vwLocator = new ViewModelLocator();
+
+            DebtBook debtBook = new DebtBook();
+
+            debtBook.AddNewHistory("Mette", 2000);
+            debtBook.AddNewHistory("Kasper", 2000);
+            debtBook.AddNewHistory("Mikkel", 2000);
+
+            DebtBookViewModel debtBookVwModel = new DebtBookViewModel(debtBook);
+
+            DataContext = debtBookVwModel;
+
+
         }
     }
 }

@@ -24,14 +24,7 @@ namespace DebtBookApp.ViewModel
             {
                 return DebtBook.DebtsHistories;
             }
-            set
-            {
-                if (value != DebtBook.DebtsHistories)
-                {
-                    DebtBook.DebtsHistories = value;
-                    INotifyPropertyChanged();
-                }
-            }
+            
         }
 
     }

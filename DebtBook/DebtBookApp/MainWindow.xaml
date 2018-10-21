@@ -10,7 +10,7 @@
         DataContext="{Binding Source={StaticResource ViewModelLocator},
         Path=DebtBookViewModel}">
     <Grid>
-        <Label Content="Debitors:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Debtors:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
         <DataGrid  ItemsSource="{Binding }" 
                    IsSynchronizedWithCurrentItem="True"
