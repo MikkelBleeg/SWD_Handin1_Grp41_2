@@ -42,6 +42,8 @@ namespace DebtBookApp.Model
         {
             Debt.Add(new Debit(debit,amount));
         }
+
+
         public class Amounts : ObservableCollection<int>
         {
             public Amounts()
