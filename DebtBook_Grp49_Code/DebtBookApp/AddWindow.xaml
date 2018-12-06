@@ -4,21 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBookApp"
+        xmlns:viewModel="clr-namespace:DebtBookApp.ViewModel"
         mc:Ignorable="d"
         Title="Add" Height="175" Width="250.098">
+    <Window.DataContext>
+        <viewModel:AddDebtHistoryViewModel/>
+    </Window.DataContext>
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,17,0,0" TextWrapping="Wrap" Text="{Binding Path=Name}" VerticalAlignment="Top" Width="80"/>
-
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Path=Amount}" VerticalAlignment="Top" Width="80"/>
-
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,17,0,0" TextWrapping="Wrap" Text="{Binding Path=Debtor}" VerticalAlignment="Top" Width="80"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="{Binding Path=InitialAmount}" VerticalAlignment="Top" Width="80"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
         <Label Content="Initiate Value" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top"/>
         <Label Content ="Kr" HorizontalAlignment="Left" Margin="167,52,0,0" VerticalAlignment="Top"/>
-
         <Button Content="Save" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="80" Command="{Binding SaveCommand}" />
-
-
         <Button Content="Cancel" HorizontalAlignment="Right" Margin="10,91,10,0" VerticalAlignment="Top" Width="80" Command="{Binding CancelCommand}" />
-
     </Grid>
 </Window>

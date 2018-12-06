@@ -1,0 +1,29 @@
+﻿<Window x:Class="DebtBookApp.MainWindow"
+     
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DebtBookApp"
+        xmlns:viewModel="clr-namespace:DebtBookApp.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="250"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=DebtBookViewModel}">
+    <Grid>
+        <Button Content="Add" HorizontalAlignment="Right" Margin="10,10,10,0" VerticalAlignment="Top" 
+                Command="{Binding AddClickedCommand}"/>
+        <Button Content="Edit" HorizontalAlignment="Right" Margin="0,46,10.333,0" VerticalAlignment="Top" 
+                Command="{Binding EditClickedCommand}"/>
+        <ListView HorizontalAlignment="Left" Height="321" VerticalAlignment="Top" Width="198" Margin="0,0,0,-0.333" 
+                  ItemsSource="{Binding DebtHistories}" SelectedIndex="{Binding IndexInDebtBook}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="clmName" Header="Name" Width="80" DisplayMemberBinding="{Binding Debtor}" />
+                    <GridViewColumn x:Name="clmTotalDebt" Header="Total Debt" Width="120"  DisplayMemberBinding="{Binding Total}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
+
